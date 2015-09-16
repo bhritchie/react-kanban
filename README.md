@@ -1,0 +1,1 @@
+Following the [SurviveJS](http://survivejs.com/) sample app.
