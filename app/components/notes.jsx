@@ -9,9 +9,10 @@ export default class Notes extends React.Component {
   }
 
   render() {
+    const notes = this.props.items;
     return (
       <div>
-        <ul className="notes">{this.props.items.map(this.renderNote)}</ul>
+        <ul className="notes">{notes.map(this.renderNote)}</ul>
       </div>
     );
   }
