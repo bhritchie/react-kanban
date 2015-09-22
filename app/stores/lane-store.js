@@ -17,6 +17,31 @@ class LaneStore {
     this.setState({lanes: this.lanes.concat(lane)});
   }
 
+  update({id, name}) {
+    let lanes = this.lanes;
+    const targetId = this.findLane(id);
+
+    if (targetId < 0) {
+      return;
+    }
+
+    lanes[targetId].name = name;
+    this.setState({lanes});
+    console.log('lane updated', id, name);
+  }
+
+  delete(id) {
+    console.log('delete lane');
+    const lanes = this.lanes;
+    const targetId = this.findLane(id);
+
+    if (targetId < 0) {
+      return;
+    }
+
+    this.setState({lanes: lanes.slice(0, targetId).concat(lanes.slice(targetId + 1))})
+  }
+
   attachToLane({laneId, noteId}) {
     if (!noteId) {
       this.waitFor(NoteStore);

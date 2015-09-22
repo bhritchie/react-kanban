@@ -18,7 +18,6 @@ class NoteStore {
 
   findNote(id) {
     const notes = this.notes;
-    console.log(notes);
     const noteIndex = notes.findIndex((note) => note.id === id);
 
     if (noteIndex < 0) {
