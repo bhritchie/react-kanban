@@ -6,9 +6,17 @@ class NoteStore {
   constructor() {
     this.bindActions(NoteActions);
     this.notes = [];
+
+    this.exportPublicMethods({
+      get: this.get.bind(this)
+    })
   }
 
-findNote(id) {
+  get(ids) {
+    return (ids || []).map((id) => this.notes[this.findNote(id)]).filter((a) => a);
+  }
+
+  findNote(id) {
     const notes = this.notes;
     console.log(notes);
     const noteIndex = notes.findIndex((note) => note.id === id);
